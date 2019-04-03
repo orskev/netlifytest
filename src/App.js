@@ -58,7 +58,7 @@ class App extends Component {
         <img src={Logo} alt="" className="form-signin-pic" />
 
         <div className="form-signin">
-          <div className="form-signin-p1">Please sign in</div>
+          <div className="form-signin-p1">Please sign in lalalalala</div>
           <input
             className="form-control"
             type="text"
