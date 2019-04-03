@@ -2,6 +2,16 @@ import React, { Component } from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 class Header extends Component {
+  getUserId = () => {
+    var str = window.location.pathname;
+    var words = str.split("/");
+    return words[2];
+  };
+
+  goToNotes = () => {
+    window.location.href = `/notes/${this.getUserId()}`;
+  };
+
   homeGetSlsId = () => {
     var str = window.location.pathname;
     var words = str.split("/");
@@ -24,10 +34,6 @@ class Header extends Component {
     var str = window.location.pathname;
     var words = str.split("/");
     return "/notes/" + words[2];
-  };
-
-  goToNotes = () => {
-    this.props.history.push(this.notesGetSlsId());
   };
 
   render() {
