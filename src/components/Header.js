@@ -26,6 +26,10 @@ class Header extends Component {
     return "/notes/" + words[2];
   };
 
+  goToNotes = () => {
+    this.props.history.push(this.notesGetSlsId());
+  };
+
   render() {
     return (
       <Navbar bg="dark" variant="dark" expand="lg">
@@ -41,7 +45,7 @@ class Header extends Component {
               <NavDropdown.Item href={this.notesGetSlsId()}>
                 Notes
               </NavDropdown.Item>
-              <NavDropdown.Item href={this.inventoryGetSlsId()}>
+              <NavDropdown.Item onClick={() => this.goToNotes()}>
                 Inventory
               </NavDropdown.Item>
               <NavDropdown.Divider />

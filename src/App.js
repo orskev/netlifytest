@@ -74,7 +74,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(userCreds);
     return (
       <form className="form">
         <img src={Logo} alt="" className="form-signin-pic" />
