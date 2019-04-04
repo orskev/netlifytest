@@ -41,7 +41,7 @@ class Header extends Component {
               <NavDropdown.Item href={this.notesGetSlsId()}>
                 Notes
               </NavDropdown.Item>
-              <NavDropdown.Item active href={this.inventoryGetSlsId()}>
+              <NavDropdown.Item href={this.inventoryGetSlsId()}>
                 Inventory
               </NavDropdown.Item>
               <NavDropdown.Divider />

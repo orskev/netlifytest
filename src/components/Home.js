@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import { Button, Carousel } from "react-bootstrap";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 class Home extends Component {
   getUserId = () => {
@@ -40,6 +41,22 @@ class Home extends Component {
       <div>
         <div>
           <Header />
+          <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar.Brand href="#home">MDR Brands</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link>Home</Nav.Link>
+                <NavDropdown title="More Actions" id="basic-nav-dropdown">
+                  <NavDropdown.Item onClick={() => this.goToSalesOrder()}>
+                    Inventory
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="/">Log Out</NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
         </div>
         <div
           style={{
