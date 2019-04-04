@@ -2,16 +2,6 @@ import React, { Component } from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 class Header extends Component {
-  getUserId = () => {
-    var str = window.location.pathname;
-    var words = str.split("/");
-    return words[2];
-  };
-
-  goToNotes = () => {
-    window.location.href = `/notes/${this.getUserId()}`;
-  };
-
   homeGetSlsId = () => {
     var str = window.location.pathname;
     var words = str.split("/");
@@ -51,7 +41,7 @@ class Header extends Component {
               <NavDropdown.Item href={this.notesGetSlsId()}>
                 Notes
               </NavDropdown.Item>
-              <NavDropdown.Item onClick={() => this.goToNotes()}>
+              <NavDropdown.Item active href={this.inventoryGetSlsId()}>
                 Inventory
               </NavDropdown.Item>
               <NavDropdown.Divider />
