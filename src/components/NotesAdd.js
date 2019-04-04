@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header from "./Header";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 
 class NotesAdd extends Component {
@@ -15,6 +15,22 @@ class NotesAdd extends Component {
     var str = window.location.pathname;
     var words = str.split("/");
     return words[2];
+  };
+
+  goToHome = () => {
+    this.props.history.push(`/home/${this.getUserId()}`);
+  };
+
+  goToArticles = () => {
+    this.props.history.push(`/articles/${this.getUserId()}`);
+  };
+
+  goToNotes = () => {
+    this.props.history.push(`/notes/${this.getUserId()}`);
+  };
+
+  goToInventory = () => {
+    this.props.history.push(`/inventory/${this.getUserId()}`);
   };
 
   addNoteAPI = _ => {
@@ -50,7 +66,28 @@ class NotesAdd extends Component {
     }
     return (
       <div>
-        <Header />
+        <Navbar bg="dark" variant="dark" expand="lg">
+          <Navbar.Brand href="#home">MDR Brands</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link onClick={() => this.goToHome()}>Home</Nav.Link>
+              <NavDropdown title="More Actions" id="basic-nav-dropdown">
+                <NavDropdown.Item onClick={() => this.goToArticles()}>
+                  Articles
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={() => this.goToNotes()}>
+                  Notes
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={() => this.goToInventory()}>
+                  Inventory
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="/">Log Out</NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
         <div style={{ margin: "10%", marginTop: "20%" }}>
           <input
             className="form-control"

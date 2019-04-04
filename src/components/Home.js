@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Header from "./Header";
 import { Button, Carousel } from "react-bootstrap";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 
@@ -36,19 +35,40 @@ class Home extends Component {
     this.props.history.push(`/repdashboard/${this.getUserId()}`);
   };
 
+  goToHome = () => {
+    this.props.history.push(`/home/${this.getUserId()}`);
+  };
+
+  goToArticles = () => {
+    this.props.history.push(`/articles/${this.getUserId()}`);
+  };
+
+  goToNotes = () => {
+    this.props.history.push(`/notes/${this.getUserId()}`);
+  };
+
+  goToInventory = () => {
+    this.props.history.push(`/inventory/${this.getUserId()}`);
+  };
+
   render() {
     return (
       <div>
         <div>
-          <Header />
           <Navbar bg="dark" variant="dark" expand="lg">
             <Navbar.Brand href="#home">MDR Brands</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
-                <Nav.Link>Home</Nav.Link>
+                <Nav.Link onClick={() => this.goToHome()}>Home</Nav.Link>
                 <NavDropdown title="More Actions" id="basic-nav-dropdown">
-                  <NavDropdown.Item onClick={() => this.goToSalesOrder()}>
+                  <NavDropdown.Item onClick={() => this.goToArticles()}>
+                    Articles
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => this.goToNotes()}>
+                    Notes
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => this.goToInventory()}>
                     Inventory
                   </NavDropdown.Item>
                   <NavDropdown.Divider />

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header from "./Header";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import Note from "./Note";
 
 class Notes extends Component {
@@ -30,6 +30,22 @@ class Notes extends Component {
     this.props.history.push(`/notesadd/${this.getUserId()}`);
   };
 
+  goToHome = () => {
+    this.props.history.push(`/home/${this.getUserId()}`);
+  };
+
+  goToArticles = () => {
+    this.props.history.push(`/articles/${this.getUserId()}`);
+  };
+
+  goToNotes = () => {
+    this.props.history.push(`/notes/${this.getUserId()}`);
+  };
+
+  goToInventory = () => {
+    this.props.history.push(`/inventory/${this.getUserId()}`);
+  };
+
   componentDidMount() {
     fetch(`http://localhost:4000/notes?sls_id=${this.getUserId()}`)
       .then(res => res.json())
@@ -44,7 +60,28 @@ class Notes extends Component {
     const { notes } = this.state;
     return (
       <div>
-        <Header />
+        <Navbar bg="dark" variant="dark" expand="lg">
+          <Navbar.Brand href="#home">MDR Brands</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link onClick={() => this.goToHome()}>Home</Nav.Link>
+              <NavDropdown title="More Actions" id="basic-nav-dropdown">
+                <NavDropdown.Item onClick={() => this.goToArticles()}>
+                  Articles
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={() => this.goToNotes()}>
+                  Notes
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={() => this.goToInventory()}>
+                  Inventory
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="/">Log Out</NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
         <img
           src={require("../images/addNote.png")}
           alt=""

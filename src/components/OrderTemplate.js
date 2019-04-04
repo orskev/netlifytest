@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-import Header from "./Header";
 import OrderConfirmation from "./OrderConfirmation";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 var today = new Date();
 var dd = today.getDate();
@@ -120,6 +120,22 @@ class OrderTemplate extends Component {
     return words[2];
   };
 
+  goToHome = () => {
+    this.props.history.push(`/home/${this.getUserId()}`);
+  };
+
+  goToArticles = () => {
+    this.props.history.push(`/articles/${this.getUserId()}`);
+  };
+
+  goToNotes = () => {
+    this.props.history.push(`/notes/${this.getUserId()}`);
+  };
+
+  goToInventory = () => {
+    this.props.history.push(`/inventory/${this.getUserId()}`);
+  };
+
   getCustomerId = () => {
     var str = window.location.pathname;
     var words = str.split("/");
@@ -231,7 +247,29 @@ class OrderTemplate extends Component {
     if (!this.state.Checkout)
       return (
         <div>
-          <Header />
+          <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar.Brand href="#home">MDR Brands</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link onClick={() => this.goToHome()}>Home</Nav.Link>
+                <NavDropdown title="More Actions" id="basic-nav-dropdown">
+                  <NavDropdown.Item onClick={() => this.goToArticles()}>
+                    Articles
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => this.goToNotes()}>
+                    Notes
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => this.goToInventory()}>
+                    Inventory
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="/">Log Out</NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+
           <div
             style={{
               marginTop: "15px",
@@ -336,7 +374,29 @@ class OrderTemplate extends Component {
     else {
       return (
         <div>
-          <Header />
+          <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar.Brand href="#home">MDR Brands</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link onClick={() => this.goToHome()}>Home</Nav.Link>
+                <NavDropdown title="More Actions" id="basic-nav-dropdown">
+                  <NavDropdown.Item onClick={() => this.goToArticles()}>
+                    Articles
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => this.goToNotes()}>
+                    Notes
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => this.goToInventory()}>
+                    Inventory
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="/">Log Out</NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+
           <OrderConfirmation
             o={o}
             Account={Account}
